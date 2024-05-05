@@ -33,33 +33,40 @@ for (let i = 0; i < toDoButtonList.length; i++) {
 
         // Make a new task using the user's input
         let toDo = new Task(nameInputList[i].value, descInputList[i].value, toDoButtonList[i]);
-
-        let toDoLine = document.createElement("div");
-        let leftBtn = document.createElement("button");
-        let removeBtn = document.createElement("button");
-        let rightBtn = document.createElement("button");
-
+       
         // Create a styled div with the evaluation as the text
         let entry = document.createElement("div");
         entry.setAttribute("style", "width: 90%; background: lightgray; margin: 10px 10px 10px 10px")
         entry.innerHTML = toDo.evaluation;
 
+         // Make the movement buttons
+         let leftBtn = document.createElement("button");
+         let removeBtn = document.createElement("button");
+         let rightBtn = document.createElement("button");
+
+        // Make a to Do Line container
+        let toDoLine = document.createElement("div");
+        toDoLine.appendChild(entry);
+        toDoLine.appendChild(leftBtn);
+        toDoLine.appendChild(removeBtn);
+        toDoLine.appendChild(rightBtn);
+        toDoLine.setAttribute("style", "display: grid; grid-template-columns: 7fr 1fr 1fr 1fr")
+
         // Append the div to the corresponding place
         function appendEntry() {
-            addToList(entry, i);
-            addToList(leftBtn, i);
-            addToList(removeBtn, i);
-            addToList(rightBtn, i);
+            addToList(toDoLine, i);
         }
 
         function moveToRight() {
-            addToList(entry, i+1);
-            addToList(leftBtn, i+1);
-            addToList(removeBtn, i+1);
-            addToList(rightBtn, i+1);
+            addToList(toDoLine, i+1);
+        }
+
+        function moveToLeft() {
+            addToList(toDoLine, i-1);
         }
 
         rightBtn.addEventListener("click", moveToRight);
+        leftBtn.addEventListener("click", moveToLeft);
         
         appendEntry();
         // Stop the page refreshing lol
