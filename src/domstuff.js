@@ -1,10 +1,7 @@
 import { Task } from "./index.js";
 
-// This gives me a list of the containers, which I can access with
+// This gives me a list of the buttons, which I can access with
 // index [0], [1], [2]
-let toDoContainerList = document.querySelectorAll(".to-do-container");
-
-// I'll do the same for the buttons
 let toDoButtonList = document.querySelectorAll(".to-do-button");
 
 // And the same for the new entry containers 
@@ -26,15 +23,6 @@ let descInputList = [toDoDescInput, doingDescInput, doneDescInput];
 function updateDOM(toDoLine, stage) {
     newEntryContainerList[stage].appendChild(toDoLine)
 }
-
-// Retrieve tasks from localStorage and display them
-for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    if (key.startsWith('task_')) {
-        let task = JSON.parse(localStorage.getItem(key));
-        // Display task in the correct container based on its stage
-        task.evaluation
-    }}
 
 // Setting up event listeners for each button, corresponding to the correct container and answers
 for (let i = 0; i < toDoButtonList.length; i++) {
