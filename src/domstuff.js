@@ -23,8 +23,8 @@ let nameInputList = [toDoNameInput, doingNameInput, doneNameInput];
 let descInputList = [toDoDescInput, doingDescInput, doneDescInput];
 
 // I want the addToList to add to a different container depending on its stage
-function addToList(x, stage) {
-    newEntryContainerList[stage].appendChild(x)
+function updateDOM(toDoLine, stage) {
+    newEntryContainerList[stage].appendChild(toDoLine)
 }
 
 // Setting up event listeners for each button, corresponding to the correct container and answers
@@ -32,19 +32,19 @@ for (let i = 0; i < toDoButtonList.length; i++) {
     toDoButtonList[i].addEventListener("click", () => {
 
         // Make a new task using the user's input
-        let toDo = new Task(nameInputList[i].value, descInputList[i].value, toDoButtonList[i]);
-       
+        let toDo = new Task(nameInputList[i].value, descInputList[i].value, i);
+        console.log(toDo);
         // Create a styled div with the evaluation as the text
         let entry = document.createElement("div");
         entry.setAttribute("style", "width: 90%; background: lightgray; margin: 10px 10px 10px 10px")
         entry.innerHTML = toDo.evaluation;
 
-         // Make the movement buttons
-         let leftBtn = document.createElement("button");
-         let removeBtn = document.createElement("button");
-         let rightBtn = document.createElement("button");
+        // Make the movement buttons
+        let leftBtn = document.createElement("button");
+        let removeBtn = document.createElement("button");
+        let rightBtn = document.createElement("button");
 
-        // Make a to Do Line container
+        // Make a To Do Line container holding all the elements
         let toDoLine = document.createElement("div");
         toDoLine.appendChild(entry);
         toDoLine.appendChild(leftBtn);
@@ -52,24 +52,20 @@ for (let i = 0; i < toDoButtonList.length; i++) {
         toDoLine.appendChild(rightBtn);
         toDoLine.setAttribute("style", "display: grid; grid-template-columns: 7fr 1fr 1fr 1fr")
 
-        // Append the div to the corresponding place
-        function appendEntry() {
-            addToList(toDoLine, i);
-        }
+        // Button changes the stage and updates DOM
+        rightBtn.addEventListener("click", () => {
+            toDo.stageUp();
+            updateDOM(toDoLine, toDo.stage)
+        })   
 
-        function moveToRight() {
-            addToList(toDoLine, i+1);
-        }
+        leftBtn.addEventListener("click", () => {
+            toDo.stageDown();
+            updateDOM(toDoLine, toDo.stage)
+        })
 
-        function moveToLeft() {
-            addToList(toDoLine, i-1);
-        }
-
-        rightBtn.addEventListener("click", moveToRight);
-        leftBtn.addEventListener("click", moveToLeft);
-        
-        appendEntry();
-        // Stop the page refreshing lol
         event.preventDefault();
+
+        updateDOM(toDoLine, i)
+        // Stop the page refreshing lol
     })}
 

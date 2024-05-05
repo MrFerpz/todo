@@ -11,6 +11,14 @@ class Task {
     get evaluation() {
         return `${this.name} task: ${this.description}`
     }
+
+    stageUp() {
+        this.stage++
+    }
+
+    stageDown() {
+        this.stage--
+    }
 }
 
 export { Task }
