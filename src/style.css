@@ -27,3 +27,9 @@ body {
 .desc-input {
     height: 2lh;
 }
+
+.new-entries-container {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 7fr 1fr 1fr 1fr;
+}
