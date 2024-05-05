@@ -6,12 +6,28 @@
     <title>To Do</title>
 </head>
 <body>
-  <div id="todo">
-    <input id="to-do-name-input">
-    <input id="to-do-desc-input">
-    <button id="to-do-button"></button>
+  <div class="flex-container">
+    <div class="to-do-container">
+      <form class="to-do-form">
+        <label>Task:<input id="to-do-name-input"></label>
+        <label>Description:<input id="to-do-desc-input" class="desc-input"></label>
+        <button class="to-do-button">Add Task</button>
+      </form>
+    </div>
+    <div class="to-do-container">
+      <form class="to-do-form">
+        <label>Task:<input id="doing-name-input"></label>
+        <label>Description:<input id="doing-desc-input" class="desc-input"></label>
+        <button class="to-do-button">Add Task</button>
+      </form>
+    </div>
+    <div class="to-do-container">
+      <form class="to-do-form">
+        <label>Task:<input id="done-name-input"></label>
+        <label>Description:<input id="done-desc-input" class="desc-input"></label>
+        <button class="to-do-button">Add Task</button>
+      </form>
+    </div>
   </div>
-  <div class="doing"></div>
-  <div class="done"></div>
 </body>
 </html>

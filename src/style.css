@@ -1,3 +1,29 @@
 body {
     background-color: lightblue;
 }
+
+.flex-container {
+    display: flex;
+    flex: auto;
+    justify-content: space-evenly;
+}
+
+.to-do-form {
+    display: grid;
+}
+
+.to-do-button {
+    grid-column: span/2;
+}
+
+.to-do-container {
+    background-color: white;
+    border: 1px black solid;
+    width: 30vw;
+    padding: 20px;
+    margin: 0 10px 0 10px;
+}
+
+.desc-input {
+    height: 2lh;
+}
