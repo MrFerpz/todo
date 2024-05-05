@@ -27,17 +27,27 @@ function updateDOM(toDoLine, stage) {
     newEntryContainerList[stage].appendChild(toDoLine)
 }
 
+// Retrieve tasks from localStorage and display them
+for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    if (key.startsWith('task_')) {
+        let task = JSON.parse(localStorage.getItem(key));
+        // Display task in the correct container based on its stage
+        task.evaluation
+    }}
+
 // Setting up event listeners for each button, corresponding to the correct container and answers
 for (let i = 0; i < toDoButtonList.length; i++) {
-    toDoButtonList[i].addEventListener("click", () => {
+    toDoButtonList[i].addEventListener("click", (event) => {
 
         // Make a new task using the user's input
         let toDo = new Task(nameInputList[i].value, descInputList[i].value, i);
         console.log(toDo);
+        
         // Create a styled div with the evaluation as the text
-        let entry = document.createElement("div");
-        entry.setAttribute("class", "entry");
-        entry.innerHTML = toDo.evaluation;
+        let toDoText = document.createElement("div");
+        toDoText.setAttribute("class", "entry");
+        toDoText.innerHTML = toDo.evaluation;
 
         // Make the movement buttons
         let leftBtn = document.createElement("button");
@@ -54,7 +64,7 @@ for (let i = 0; i < toDoButtonList.length; i++) {
 
         // Make a To Do Line container holding all the elements
         let toDoLine = document.createElement("div");
-        toDoLine.appendChild(entry);
+        toDoLine.appendChild(toDoText);
         toDoLine.appendChild(leftBtn);
         toDoLine.appendChild(removeBtn);
         toDoLine.appendChild(rightBtn);
@@ -73,9 +83,12 @@ for (let i = 0; i < toDoButtonList.length; i++) {
 
         removeBtn.addEventListener("click", () => {
             toDoLine.remove();
+            localStorage.removeItem('task_' + toDo.id);
         })
 
         event.preventDefault();
+
+        localStorage.setItem("task_" + toDo.id, JSON.stringify(toDo));
 
         updateDOM(toDoLine, i)
         // Stop the page refreshing lol

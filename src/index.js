@@ -6,6 +6,7 @@ class Task {
         this.name = name;
         this.description = description;
         this.stage = stage;
+        this.id = Task.nextId++;
     }
 
     get evaluation() {
@@ -20,5 +21,7 @@ class Task {
         this.stage--
     }
 }
+
+Task.nextId = 1;
 
 export { Task }
