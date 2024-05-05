@@ -1,5 +1,6 @@
 body {
     background-color: lightblue;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .title {
@@ -32,31 +33,80 @@ input {
 
 .to-do-button {
     grid-column: span/2;
+    margin: 5px 0px 5px 0px;
     background-color: #3CBC8D;
     color: white;
     font-weight: 700;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 2px solid black;
 }
 
 .to-do-container {
     background-color: white;
-    border: 1px black solid;
+    border: 2px black solid;
     width: 30vw;
+    height: 90vh;
     padding: 20px;
     margin: 0 10px 0 10px;
+    overflow: auto;
 }
 
 .desc-input {
     height: 2lh;
 }
 
-.new-entries-container {
-    border: 1px solid black;
-}
-
 .entry {
     width: 90%;
     margin: 10px 10px 10px 10px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    padding: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 1.5px;
+    font-size: 14px;
+}
+
+/* Left button */
+.left-button {
+    background-color: #ffcc00; /* Yellow */
+    color: white;
+    height: 50%;
+    align-self: center;
+    border: 1.5px solid black;
+}
+
+
+/* Right button */
+.right-button {
+    background-color: #66cc66; /* Green */
+    color: white;
+    height: 50%;
+    align-self: center;
+    border: 1.5px solid black;
+}
+
+/* Remove button */
+.remove-button {
+    background-color: #ff6666; /* Red */
+    color: white;
+    height: 50%;
+    align-self: center;
+    border: 1.5px solid black;
+}
+
+.to-do-line {
+    display: grid; 
+    grid-template-columns: 7fr 1fr 1fr 1fr 0.5fr;
+    border: 3px solid black;
+    overflow:scroll;
+    margin-bottom: 1px;
+}
+
+.input-text {
     font-weight: 500;
 }

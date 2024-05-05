@@ -41,7 +41,7 @@ for (let i = 0; i < toDoButtonList.length; i++) {
 
         // Make the movement buttons
         let leftBtn = document.createElement("button");
-        leftBtn.setAttribute("class", "left arrow");
+        leftBtn.setAttribute("class", "left-button");
         leftBtn.innerHTML = "<";
 
         let removeBtn = document.createElement("button");
@@ -49,7 +49,7 @@ for (let i = 0; i < toDoButtonList.length; i++) {
         removeBtn.innerHTML = "x";
 
         let rightBtn = document.createElement("button");
-        rightBtn.setAttribute("class", "right arrow");
+        rightBtn.setAttribute("class", "right-button");
         rightBtn.innerHTML = ">";
 
         // Make a To Do Line container holding all the elements
@@ -58,7 +58,7 @@ for (let i = 0; i < toDoButtonList.length; i++) {
         toDoLine.appendChild(leftBtn);
         toDoLine.appendChild(removeBtn);
         toDoLine.appendChild(rightBtn);
-        toDoLine.setAttribute("style", "display: grid; grid-template-columns: 7fr 1fr 1fr 1fr")
+        toDoLine.setAttribute("class", "to-do-line")
 
         // Button changes the stage and updates DOM
         rightBtn.addEventListener("click", () => {

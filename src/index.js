@@ -9,7 +9,7 @@ class Task {
     }
 
     get evaluation() {
-        return `${this.name} task: ${this.description}`
+        return `<b>Task</b><br> ${this.name} <br> <b>Description</b><br> ${this.description}`
     }
 
     stageUp() {
