@@ -36,13 +36,21 @@ for (let i = 0; i < toDoButtonList.length; i++) {
         console.log(toDo);
         // Create a styled div with the evaluation as the text
         let entry = document.createElement("div");
-        entry.setAttribute("style", "width: 90%; background: lightgray; margin: 10px 10px 10px 10px")
+        entry.setAttribute("class", "entry");
         entry.innerHTML = toDo.evaluation;
 
         // Make the movement buttons
         let leftBtn = document.createElement("button");
+        leftBtn.setAttribute("class", "left arrow");
+        leftBtn.innerHTML = "<";
+
         let removeBtn = document.createElement("button");
+        removeBtn.setAttribute("class", "remove-button");
+        removeBtn.innerHTML = "x";
+
         let rightBtn = document.createElement("button");
+        rightBtn.setAttribute("class", "right arrow");
+        rightBtn.innerHTML = ">";
 
         // Make a To Do Line container holding all the elements
         let toDoLine = document.createElement("div");
@@ -61,6 +69,10 @@ for (let i = 0; i < toDoButtonList.length; i++) {
         leftBtn.addEventListener("click", () => {
             toDo.stageDown();
             updateDOM(toDoLine, toDo.stage)
+        })
+
+        removeBtn.addEventListener("click", () => {
+            toDoLine.remove();
         })
 
         event.preventDefault();
