@@ -81,4 +81,3 @@ for (let i = 0; i < toDoButtonList.length; i++) {
         updateDOM(toDoLine, i)
         // Stop the page refreshing lol
     })}
-
